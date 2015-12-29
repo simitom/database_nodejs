@@ -1,0 +1,10 @@
+"User ID=root;Password=1234;Host=localhost;Port=5432;Database=employees;
+Pooling=true;Min Pool Size=0;Max Pool Size=100;Connection Lifetime=0;"
+(current_table==table.tbl_name)?"highlight":""
+
+- var liclass="highlight"
+a(href='/connections/edit',ng-click='edit(employee.id)') edit   
+						a(href='/connections/delete',ng-click='edit(employee.id)') delete		
+
+	
+

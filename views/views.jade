@@ -1,0 +1,8 @@
+extends layout
+
+block content
+	each row, i in rows
+		each col, i in Object.keys(row)
+			div.form-group
+				label #{col} :
+				span #{row[col]}

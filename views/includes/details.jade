@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	div
+		table.table.table-condensed				
+			each heading, i in Object.keys(rows[0])		
+				th 	#{heading}
+			each row, i in rows
+				tr
+					each col, i in Object.keys(row)
+						td
+							span #{row[col]}							
+
+	div
+
+	

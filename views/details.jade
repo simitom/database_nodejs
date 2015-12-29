@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	div.col-md-3
+		ul
+			each table, i in tables
+				- var liclass= current_table==table.tbl_name ?"highlight":""
+				li(class='#{liclass} well')
+					a(href='/connection/details/#{table.tbl_name}' class='#{liclass}') #{table.tbl_name}
+	div.col-md-9
+		table.table.table-bordered			
+			each heading, i in Object.keys(rows[0])		
+				th.info 	#{heading}
+			th.info Action
+			each row, i in rows
+				tr
+					each col, i in Object.keys(row)
+						td 
+							span #{row[col]}
+					td
+						a.button.btn.btn-primary(href="/connection/views/#{row[pkcol]}" type='button') View
+						a.button.btn.btn-success(href="/connection/edit/#{row[pkcol]}" type='button') Edit     
+						a.button.btn.btn-danger(href="/connection/delete/#{row[pkcol]}" type='button') Delete	
+
+	

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	div
+		ul
+			each table, i in rows
+				li.well
+					a(href='/connection/details/#{table.tbl_name}') #{table.tbl_name}
+
+	div

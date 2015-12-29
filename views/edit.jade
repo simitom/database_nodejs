@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	each row, i in rows
+		each col, i in Object.keys(row)
+			div.form-group
+				label #{col} :
+				form(method='post', action='/connection/edit/#{row[col]}')
+					div.form-group
+						label #{col} :
+						input.form-control(type='text', name='name' value='#{event.name}')

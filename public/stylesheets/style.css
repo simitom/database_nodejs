@@ -1,0 +1,38 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container{
+		padding: 5px;
+		margin: 5px;
+}
+
+
+th, td{
+	padding: 5px;
+	margin: 5px;
+}
+
+.highlight
+{
+
+  color: white;	
+  background-color: #5bc0de;
+}
+
+a.button.btn.btn-danger{
+	margin-left: 10px;
+}
+
+a.button.btn.btn-success{
+	margin-left: 10px;
+}
+
+li{
+	list-style: none;
+}
