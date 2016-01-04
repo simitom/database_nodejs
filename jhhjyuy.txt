@@ -1,0 +1,4 @@
+div.form-group
+		label column #{col} :
+	span.form-control
+	span #{row[col]}

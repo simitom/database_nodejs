@@ -10,7 +10,7 @@ head
 	
 body
 	div
-	p Welcome to #{title}
+	p.glyphicon.glyphicon-list(aria-hidden='true') #{title}
 	.container
 		form.form-horizontal(method='post' action='/connection')
 			div.form-group
@@ -26,6 +26,7 @@ body
 				input(type='text' name='database_name'  class="form-control" value="#{dbname}")
 				
 			div.form-group
-				button.btn.btn-default(type='submit') Connect
+				button.btn.btn-default(type='submit')
+					span.glyphicon.glyphicon-send(aria-hidden='true')  Connect
 	block content
 		

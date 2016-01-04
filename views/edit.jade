@@ -1,11 +1,11 @@
 extends layout
 
 block content
-	each row, i in rows
-		each col, i in Object.keys(row)
-			div.form-group
-				label #{col} :
-				form(method='post', action='/connection/edit/#{row[col]}')
-					div.form-group
-						label #{col} :
-						input.form-control(type='text', name='name' value='#{event.name}')
+	form(method='post' action='/connection/edit/#{pkval}')
+		each row, i in rows
+			each col, i in Object.keys(row)
+				div.form-group
+					label #{col} :
+					input.form-control.list-group-item.list-group-item-warning(type='text', value='#{row[col]}', name='tablerow[#{col}]')
+		button.btn.btn-success(href='/connection/edit/:pkval' type='submit')
+			span.glyphicon.glyphicon-save(aria-hidden='true')  Save

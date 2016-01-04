@@ -22,6 +22,7 @@ var connection = require('./routes/connection');
 
 var app = express();
 
+
 // //to use db,client and connection is defined
 // var client = new cassandra.Client({contactPoints:['127.0.0.1']});
 // client.connect(function(err, result){
@@ -36,7 +37,8 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
