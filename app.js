@@ -5,15 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sqlite3 = require("sqlite3");
-// var cassandra = require('cassandra-driver');
 var pg =require('pg');
-var knex = require('knex')
-// ({
-//   client: 'sqlite3',
-//   connection: {
-//     filename: "C:/sqlite/employeeinfo.sqlite"
-//   }
-// });
+var knex = require('knex');
+
 
 
 var routes = require('./routes/index');
@@ -38,7 +32,6 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

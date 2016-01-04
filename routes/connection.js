@@ -5,9 +5,7 @@ var pg =require('pg');
 var bodyParser = require('body-parser');
 var cache = require('../models/cache');
 
-// var app = express();
 
-// app.use(express.bodyParser());
 /* GET tablenames listing. */
 router.post('/', function(req, res, next) {
 
@@ -119,6 +117,7 @@ router.get('/views/:pkval', function(req, res, next){
  		console.log(rows);
  		res.render('views', {
  			rows: rows,
+ 			db_name: cache.dbname,
  			title: 'Table: '+cache.current_table
  		});
  	});   
@@ -146,16 +145,19 @@ router.get('/edit/:pkval', function(req, res, next){
  		console.log(rows);
  		res.render('edit', {
  			rows: rows,
+ 			db_name: cache.dbname,
  			title: 'Table: '+cache.current_table,
- 			pkval: req.params.pkval
+ 			pkval: req.params.pkval,
+ 			pkcol: primary_key
  		});
  	});   
  });
 
+
 //post the edit form
 router.post('/edit/:pkval', function(req, res, next){
 
-console.log("req.body");	
+	
 	console.log(req.body.tablerow);	
           // console.log(JSON.parse(req.body));	
 
@@ -168,27 +170,26 @@ console.log("req.body");
 
   var knex= cache.connectionObj;
 
-  console.log("req.params.pkval",req.params.pkval);
+  // console.log("req.params.pkval",req.params.pkval);
 
 console.log(knex(cache.current_table)
   .where(cache.pkcol, '=', req.params.pkval)
   .update(req.body.tablerow).toString());
 
-  knex(cache.current_table)
-  .where(cache.pkcol, '=', req.params.pkval)
-  .update(req.body.tablerow).then(function(rows){
-	console.log(rows);
+   knex(cache.current_table)
+    .where(cache.pkcol, '=', req.params.pkval)
+    .update(req.body.tablerow).then(function(rows){
+	 console.log(rows);
 	 knex.select('*').from(cache.current_table).where(cache.pkcol,req.params.pkval).then(function(rows){
  		console.log(rows);
- 		res.render('edit', {
- 			rows: rows,
- 			title: 'Table: '+cache.current_table,
- 			pkval: req.params.pkval
- 		});
+ 		// res.render('edit' + cache.current_table, {
+ 		// 	rows: rows,
+ 		// 	title: 'Table: '+cache.current_table,
+ 		// 	pkval: req.params.pkval
+ 		// });
+	 res.redirect('/connection/details/' + cache.current_table);
  	});  
   });
-
-
  });
 
 module.exports = router;

@@ -102,6 +102,7 @@ p{
 .btn-default {
 	background: #dddddd;
 	border-radius: 15px;
+	margin-left:7px;
 }
   
   
@@ -110,5 +111,18 @@ p{
 	margin-right: 7px;
 }
   
+  .glyphicon-pencil{
+  	color:#000;
+  }
 
- 
+.glyphicon-eye-open{
+	color: #000;
+ }
+
+.glyphicon-trash{
+	color: #000;
+}
+
+.glyphicon-saved{
+	color: #000;
+	}
