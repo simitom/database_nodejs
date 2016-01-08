@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	.container
+		form(method='post' action='/connection/add')
+			each row, i in rows
+				each col, i in Object.keys(row)
+					div.form-group
+						label #{col} :
+							input.form-control.list-group-item.list-group-item-warning(type='text', name='tablerow[#{col}]')
+			button.btn.btn-success(href='/connection/add' type='submit')
+				span.glyphicon.glyphicon-saved(aria-hidden='true')  Add

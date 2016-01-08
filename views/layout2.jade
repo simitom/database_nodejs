@@ -1,0 +1,31 @@
+doctype html
+head
+	title Database connection
+	meta(http-equiv='Content-Language', content='English')
+	meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+	script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+	link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+	link(rel='stylesheet', type='text/css', href='/stylesheets/style.css', media='screen')
+	script(src='/javascripts/bootstrap.js')
+body
+	div
+	p.glyphicon.glyphicon-list(aria-hidden='true') #{title}
+	.container
+		form.form-horizontal(method='post' action='/connection')
+			div.form-group
+				label Connections :  
+				- var db= typeof(db_connection)!='undefined' ? db_connection :''
+				select(name='connections' class="form-control")
+					option(value='sqlite3' selected=(db=='sqlite3')? true:false) Sqlite
+					option(value='pg' selected=(db=='pg')? true:false) Postgresql
+			
+			div.form-group
+				label Databasename :  	
+				- var dbname= typeof(db_name)!='undefined' ? db_name :''		
+				input(type='text' name='database_name'  class="form-control" value="#{dbname}")
+				
+			div.form-group
+				button.btn.btn-default(type='submit')
+					span.glyphicon.glyphicon-send(aria-hidden='true')  Connect
+	block content
+		

@@ -1,14 +1,15 @@
 extends layout
 
 block content
-	form(method='post' action='/connection/edit/#{pkval}')
-		each row, i in rows
-			each col, i in Object.keys(row)
-				div.form-group
-					label #{col} :
-					if(col == pkcol)
-						input.form-control.list-group-item.list-group-item-warning(type='text', value='#{row[col]}', name='tablerow[#{col}]', readonly='true')
-					else
-						input.form-control.list-group-item.list-group-item-warning(type='text', value='#{row[col]}', name='tablerow[#{col}]')
-		button.btn.btn-success(href='/connection/edit/:pkval' type='submit')
-			span.glyphicon.glyphicon-saved(aria-hidden='true')  Save
+	.container
+		form(method='post' action='/connection/edit/#{pkval}')
+			each row, i in rows
+				each col, i in Object.keys(row)
+					div.form-group
+						label #{col} :
+						if(col == pkcol)
+							input.form-control.list-group-item.list-group-item-warning(type='text', value='#{row[col]}', name='tablerow[#{col}]', readonly='true')
+						else
+							input.form-control.list-group-item.list-group-item-warning(type='text', value='#{row[col]}', name='tablerow[#{col}]')
+			button.btn.btn-success(href='/connection/edit/:pkval' type='submit')
+				span.glyphicon.glyphicon-saved(aria-hidden='true')  Save

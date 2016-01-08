@@ -1,8 +1,9 @@
 extends layout
 
 block content
-	each row, i in rows
-		each col, i in Object.keys(row)
-			div.form-group
-				label #{col} :
-				span.list-group-item.list-group-item-info #{row[col]}
+	.container
+		each row, i in rows
+			each col, i in Object.keys(row)
+				div.form-group
+					label #{col} :
+					span.list-group-item.list-group-item-info #{row[col]}

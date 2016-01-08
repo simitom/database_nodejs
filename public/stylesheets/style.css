@@ -1,35 +1,36 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+
 
 a {
   color: #00B7FF;
 }
 
 .container{
-		padding: 5px;
+		padding: 50px;
 		margin: 5px;
 		border-bottom: 1px dashed #ccc;
-		
 }
 
+.content{
+	margin-bottom: 0;
+}
 
 th, td{
-	padding: 5px;
+    padding: 5px;
 	margin: 5px;
-	font-family: lato;
-	font-size: 16px;
+	/*font-family: lato;*/
+	/*font-size: 16px;*/
 }
 
 th{
 	text-transform: uppercase;
 }
 
+tr{
+	background: #fff;
+}
+
 .highlight
 {
- 
-
   color: #fff;	
   background-color: #8ddbf2;
 }
@@ -47,82 +48,87 @@ span.label.label-info{
 
 .form-group{
 	margin-top: 20px;
+	padding: 0 50px;
+	width: 50%;
+	margin-bottom: 20px;
+
 }
 
 .form-control{
 	width: 40%;
 }
 
-.well{
+/*.well{
 
 	font-family: lato;
 	margin-top: 20px;
 	text-transform: uppercase;
 	text-align: center;
 	border-radius: 15px;
-}
+}*/
 
-.table-bordere{
+.table-bordered{
 	margin-top: 20px;
 }
 
 p{
-	font-size: 30px;
-	font-family: lato;
+	font-size: 30px !important;
+	font-family:lato;
 	text-transform: uppercase;
+
 }
 
-.list-group-item-info {
-   width:40%;
-   }
+.list-group-item:last-child {
 
-   label{
+   width:40%;
+   padding-bottom: 20px;
+}
+
+ label{
    	font-family: lato;
    	font-size: 17px;
 
    }
 
-   .btn-info {
-   	margin-left:7px;
-	border-radius: 15px;
-   }
-
-  .btn-danger {
-   	margin-left:7px;
-	border-radius: 15px;
-   }
-
-  
-  .btn-success {
-   	margin-left:7px;
-	border-radius: 15px;
+ .btn-info,.btn-danger,.btn-success,.btn-warning,.btn-primary {
+   	margin-left:7px !important;
+	border-radius: 13px !important;
    }
 
 
 .btn-default {
 	background: #dddddd;
-	border-radius: 15px;
-	margin-left:7px;
+	border-radius: 13px  !important ;
+	
 }
   
   
-.glyphicon-list:before {
+.glyphicon-list {
 	font-size: 17px;
-	margin-right: 7px;
+    padding-left: 15px;
 }
   
-  .glyphicon-pencil{
-  	color:#000;
+ .glyphicon-pencil,.glyphicon-eye-open,.glyphicon-trash,.glyphicon-saved,.glyphicon-plus{
+  	color: black;
   }
 
-.glyphicon-eye-open{
-	color: #000;
- }
+/*li.active a{
+	color:#9F8AF1;
+}*/
 
-.glyphicon-trash{
-	color: #000;
+.fa span{
+	text-transform: uppercase;
 }
 
-.glyphicon-saved{
-	color: #000;
-	}
+ .skin-purple .sidebar-menu>li.active>a {
+ 	color:#9F8AF1;
+ }
+
+/*.content div p{
+	font-size: 50px;
+	text-transform: uppercase;
+	font-family: lato;
+
+}
+
+*/

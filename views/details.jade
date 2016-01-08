@@ -1,27 +1,23 @@
 extends layout
 
 block content
-	div.col-md-3
-		ul
-			each table, i in tables
-				- var liclass= current_table==table.tbl_name ?"highlight":""
-				li(class='#{liclass} well')
-					a(href='/connection/details/#{table.tbl_name}' class='#{liclass}') #{table.tbl_name}
-	div.col-md-9
-		table.table.table-bordered
-			each heading, i in Object.keys(rows[0])		
-				th.info 	#{heading}
-			th.info Action
-			each row, i in rows
-				tr
-					each col, i in Object.keys(row)
-						td 
-							span #{row[col]}
-					td
-						a.button.btn.btn-info(href="/connection/views/#{row[pkcol]}" type='button') 
-							span.glyphicon.glyphicon-eye-open(aria-hidden='true')
-						a.button.btn.btn-success(href="/connection/edit/#{row[pkcol]}" type='button') 
-							span.glyphicon.glyphicon-pencil(aria-hidden='true')
-						a.button.btn.btn-danger(href="/connection/delete/#{row[pkcol]}" onclick="return confirm('Are you sure?');" type='button')
-							span.glyphicon.glyphicon-trash(aria-hidden='true')
-	
+	.container
+		div.col-md-9
+			table.table.table-bordered
+				each heading, i in Object.keys(rows[0])		
+					th.info 	#{heading}
+				th.info Action
+				each row, i in rows
+					tr
+						each col, i in Object.keys(row)
+							td 
+								span #{row[col]}
+						td
+							a.button.btn.btn-info(href="/connection/views/#{row[pkcol]}" type='button') 
+								span.glyphicon.glyphicon-eye-open(aria-hidden='true')
+							a.button.btn.btn-success(href="/connection/edit/#{row[pkcol]}" type='button') 
+								span.glyphicon.glyphicon-pencil(aria-hidden='true')
+							a.button.btn.btn-danger(href="/connection/delete/#{row[pkcol]}" onclick="return confirm('Are you sure?');" type='button')
+								span.glyphicon.glyphicon-trash(aria-hidden='true')
+			a.button.btn.btn-primary(href="/connection/add" type='button')
+				span.glyphicon.glyphicon-plus(aria-hidden='true')  Add New

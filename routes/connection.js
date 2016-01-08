@@ -46,7 +46,7 @@ if(req.body.connections=='sqlite3'){
  	console.log(rows);
  	cache.tables= rows;
  	res.render('table', {
- 		rows: rows,
+ 		tablenames: rows,
  		db_name: cache.dbname,
  		db_connection: cache.db,
  		title: 'Table list'
@@ -58,7 +58,7 @@ if(req.body.connections=='sqlite3'){
  	console.log(rows);
  	cache.tables= rows;
  	res.render('table', {
- 		rows: rows,
+ 		tablenames: rows,
  		db_name: cache.dbname,
  		db_connection: cache.db,
  		title: 'Table list'
@@ -84,10 +84,10 @@ router.get('/details/:tbl', function(req, res, next) {
  	primary_key='id';
  } 	
 else if (req.params.tbl=='employee'){
- 	primary_key='EmployeeID';
+ 	primary_key='Employee_id';
 
- } else if (req.params.tbl=='employeedetails'){
- 	primary_key='employeeid';
+ } else if (req.params.tbl=='employee_details'){
+ 	primary_key='Employee_id';
  }
 console.log(primary_key);
   
@@ -100,9 +100,9 @@ cache.current_table= req.params.tbl;
  		rows: rows,
  		db_name: cache.dbname,
  		db_connection: cache.db,
- 		tables: cache.tables,
+ 		tablenames: cache.tables,
  		current_table: req.params.tbl,
- 		title:'Table Details',
+ 		title: 'Table Details',
  		pkcol: primary_key
  	});
  });   
@@ -118,7 +118,8 @@ router.get('/views/:pkval', function(req, res, next){
  		res.render('views', {
  			rows: rows,
  			db_name: cache.dbname,
- 			title: 'Table: '+cache.current_table
+ 			title: 'Table: '+cache.current_table,
+      tablenames: cache.tables
  		});
  	});   
  });
@@ -148,7 +149,9 @@ router.get('/edit/:pkval', function(req, res, next){
  			db_name: cache.dbname,
  			title: 'Table: '+cache.current_table,
  			pkval: req.params.pkval,
- 			pkcol: primary_key
+ 			pkcol: primary_key,
+      tablenames: cache.tables
+
  		});
  	});   
  });
@@ -161,12 +164,12 @@ router.post('/edit/:pkval', function(req, res, next){
 	console.log(req.body.tablerow);	
           // console.log(JSON.parse(req.body));	
 
-         var updateObj ={} ;
-         for(var col in req.body.tablerow) 
-         {
-			console.log(col);	
-			updateObj[col] = req.body.tablerow[col];
-         }
+   //       var updateObj ={} ;
+   //       for(var col in req.body.tablerow) 
+   //       {
+			// console.log(col);	
+			// updateObj[col] = req.body.tablerow[col];
+   //       }
 
   var knex= cache.connectionObj;
 
@@ -191,5 +194,47 @@ console.log(knex(cache.current_table)
  	});  
   });
  });
+
+
+//getting add form
+router.get('/add', function(req, res, next){
+          console.log(req);	
+
+ var knex= cache.connectionObj;
+   knex.select('*').from(cache.current_table).limit(1).then(function(rows){
+ 		console.log(rows);
+ 		res.render('add', {
+ 			rows: rows,
+ 			db_name: cache.dbname,
+ 			title: 'Table: '+cache.current_table,
+ 			pkval: req.params.pkval,
+ 			pkcol: primary_key,
+      tablenames: cache.tables
+
+ 		});
+ 	});   
+ });
+
+//post the add form
+router.post('/add', function(req, res, next){
+
+ console.log(req.body.tablerow);	
+  var knex= cache.connectionObj;
+
+  knex(cache.current_table).insert(req.body.tablerow).limit(1).then(function(rows){
+ 		console.log(rows);
+ 		// res.render('add', {
+ 		// 	rows: rows,
+ 		// 	db_name: cache.dbname,
+ 		// 	title: 'Table: '+cache.current_table,
+ 		// 	pkval: req.params.pkval,
+ 		// 	pkcol: primary_key
+ 		// });
+  	res.redirect('/connection/details/' + cache.current_table);
+ 	});   
+ });
+
+
+
 
 module.exports = router;
