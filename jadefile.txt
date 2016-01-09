@@ -1,0 +1,16 @@
+table.jade
+div
+		ul
+			each table, i in tablenames
+				li.well
+					a(href='/connection/details/#{table.tbl_name}') #{table.tbl_name}
+
+	
+details.jade
+
+		div.col-md-3
+			ul
+				each table, i in tables
+					- var liclass= current_table==table.tbl_name ?"highlight":""
+					li(class='#{liclass} well')
+						a(href='/connection/details/#{table.tbl_name}' class='#{liclass}') #{table.tbl_name}

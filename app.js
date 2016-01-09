@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var sqlite3 = require("sqlite3");
 var pg =require('pg');
 var knex = require('knex');
+var exphbs  = require('express3-handlebars');
 
 
 
@@ -23,9 +24,73 @@ var app = express();
 //   console.log('cassandra connected');
 // });
 
+
+
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
+//app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
+
+//app.engine('handlebars',handlebars.engine);
+
+//app.set('view engine', 'handlebars');
+//app.set("view options", { layout: 'main' });
+
+
+
+//var hbs = exphbs.create({
+//    defaultLayout: "main",
+//    extname: ".handlebars"
+//});
+//
+//// register helpers after partials have loaded, and pass Handlebars instance into register function
+//hbs.loadPartials(function(err, partials){
+//    // attach partials to Handlebars instance, exposing them to helpers
+//    hbs.handlebars.partials = partials;
+//    require("./helpers/handlebars").register(hbs.handlebars);
+//});
+//
+//app.engine('handlebars', hbs.engine);
+//app.set('view engine', 'handlebars');
+
+var hbs = exphbs.create({
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+        foo: function (obj, options) { 
+            console.log(options);
+            console.log("KEY: ", options.hash.key);
+            
+            return obj[options.hash.key]; 
+        },
+        bar: function () { return 'BAR!'; }
+    },
+    defaultLayout: "main",
+    extname : ".handlebars"
+});
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+
+//var hbs = exphbs.create({
+//    // Specify helpers which are only registered on this instance.
+//    helpers: {
+//        withItem: function(object) { 
+//            console.log("DEBUG: ", object); 
+//            return object;
+//        }
+//    }
+//});
+
+// exphbs.registerHelper('withItem', function(object, options) {
+//        alert(object);
+//    return object;//.fn(object[options.hash.key]);
+//});
+
+// app.set('views', path.join(__dirname, 'views'));
+//  app.set('view engine', 'jade');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

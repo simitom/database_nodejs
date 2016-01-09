@@ -1,0 +1,10 @@
+<div>
+    <ul>
+       
+        {{#each tablenames}}
+            <li>
+                <a href="/connection/details/{{this.tbl_name}}">{{this.tbl_name}}</a>
+            </li>           
+        {{/each}}
+    </ul>
+</div>

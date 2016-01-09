@@ -4,6 +4,7 @@ var sqlite3 = require('sqlite3');
 var pg =require('pg');
 var bodyParser = require('body-parser');
 var cache = require('../models/cache');
+var exphbs  = require('express3-handlebars');
 
 
 /* GET tablenames listing. */

@@ -1,0 +1,14 @@
+<div>
+  <table class="table table-condensed">
+    {{#each Object.keys(rows[0])}}
+      <th>	{{#heading}} </th>
+   {{/each}}
+    {{#each rows}}
+      <tr>
+          {{#each Object.keys(rows[0])}}
+        <td><span>{{#row[col]}}</span></td>
+          {{/each}}
+      </tr>
+    {{/each}}
+  </table>
+</div>
