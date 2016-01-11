@@ -1,0 +1,18 @@
+
+<div class="container">
+    <form method="post" action="/connection/edit/{{pkval}}">
+        {{#each rows}}
+            {{#each this}}
+                <div class="form-group">
+                    <label>{{@key}}:</label>
+                    {{#ifvalue @key value=../../pkcol}}
+                        <input type="text" value="{{this}}",  class="form-control list-group-item list-group-item-warning" readonly="true" name='tablerow[{{@key}}]'> 
+                    {{else}} 
+                        <input type="text" value="{{this}}", name='tablerow[{{@key}}]' class="form-control list-group-item list-group-item-warning">
+                    {{/ifvalue}}
+                </div>
+            {{/each}}
+        {{/each}}
+        <button href="/connection/edit/{{pkval}}" type="submit" class="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-saved"> Save</span></button>
+    </form>
+</div>

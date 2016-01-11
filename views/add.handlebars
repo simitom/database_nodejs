@@ -1,0 +1,14 @@
+<div class="container">
+    <form method ="post" action="/connection/add">
+        {{#each rows}}
+            {{#each this}}
+                <div class="form-group">
+                    <label>{{@key}} :
+                    <input type="text" name="tablerow[{{@key}}]" class="form-control list-group-item list-group-item-warning"/>
+                    </label>
+                </div>
+            {{/each}}
+        {{/each}}
+         <button href="/connection/add" type="submit" class="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-saved"> Add</span></button>
+    </form>
+</div>

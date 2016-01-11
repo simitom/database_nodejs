@@ -18,42 +18,6 @@ var connection = require('./routes/connection');
 var app = express();
 
 
-// //to use db,client and connection is defined
-// var client = new cassandra.Client({contactPoints:['127.0.0.1']});
-// client.connect(function(err, result){
-//   console.log('cassandra connected');
-// });
-
-
-
-
-// view engine setup
-
-//app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-
-
-//app.engine('handlebars',handlebars.engine);
-
-//app.set('view engine', 'handlebars');
-//app.set("view options", { layout: 'main' });
-
-
-
-//var hbs = exphbs.create({
-//    defaultLayout: "main",
-//    extname: ".handlebars"
-//});
-//
-//// register helpers after partials have loaded, and pass Handlebars instance into register function
-//hbs.loadPartials(function(err, partials){
-//    // attach partials to Handlebars instance, exposing them to helpers
-//    hbs.handlebars.partials = partials;
-//    require("./helpers/handlebars").register(hbs.handlebars);
-//});
-//
-//app.engine('handlebars', hbs.engine);
-//app.set('view engine', 'handlebars');
-
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
     helpers: {
@@ -63,7 +27,13 @@ var hbs = exphbs.create({
             
             return obj[options.hash.key]; 
         },
-        bar: function () { return 'BAR!'; }
+        ifvalue: function (conditional, options) {
+            if (options.hash.value === conditional) {
+            return options.fn(this)
+          } else {
+            return options.inverse(this);
+          }
+        }
     },
     defaultLayout: "main",
     extname : ".handlebars"
@@ -73,23 +43,6 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 
-//var hbs = exphbs.create({
-//    // Specify helpers which are only registered on this instance.
-//    helpers: {
-//        withItem: function(object) { 
-//            console.log("DEBUG: ", object); 
-//            return object;
-//        }
-//    }
-//});
-
-// exphbs.registerHelper('withItem', function(object, options) {
-//        alert(object);
-//    return object;//.fn(object[options.hash.key]);
-//});
-
-// app.set('views', path.join(__dirname, 'views'));
-//  app.set('view engine', 'jade');
 
 
 // uncomment after placing your favicon in /public
@@ -104,12 +57,15 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/connection', connection);
 
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
 
 // error handlers
 

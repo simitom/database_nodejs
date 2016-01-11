@@ -17,8 +17,10 @@ a {
 th, td{
     padding: 5px;
 	margin: 5px;
-	/*font-family: lato;*/
-	/*font-size: 16px;*/
+/*
+	font-family: lato;
+	font-size: 14px;
+*/
 }
 
 th{
@@ -31,7 +33,7 @@ tr{
 
 .highlight
 {
-  color: #fff;	
+  color: #000;	
   background-color: #8ddbf2;
 }
 
@@ -58,14 +60,6 @@ span.label.label-info{
 	width: 40%;
 }
 
-/*.well{
-
-	font-family: lato;
-	margin-top: 20px;
-	text-transform: uppercase;
-	text-align: center;
-	border-radius: 15px;
-}*/
 
 .table-bordered{
 	margin-top: 20px;
@@ -74,7 +68,7 @@ span.label.label-info{
 p{
 	font-size: 30px !important;
 	font-family:lato;
-	text-transform: uppercase;
+/*	text-transform: uppercase;*/
 
 }
 
@@ -101,8 +95,7 @@ p{
 	border-radius: 13px  !important ;
 	
 }
-  
-  
+ 
 .glyphicon-list {
 	font-size: 17px;
     padding-left: 15px;
@@ -112,23 +105,15 @@ p{
   	color: black;
   }
 
-/*li.active a{
-	color:#9F8AF1;
+
+
+li.active:foo a{
+    color:#9F8AF1;
+}
+
+/*
+skin-purple .sidebar-menu>li>a.active:foo{
+    border-left: 3px solid purple;
+    color: #9F8AF1;
 }*/
 
-.fa span{
-	text-transform: uppercase;
-}
-
- .skin-purple .sidebar-menu>li.active>a {
- 	color:#9F8AF1;
- }
-
-/*.content div p{
-	font-size: 50px;
-	text-transform: uppercase;
-	font-family: lato;
-
-}
-
-*/

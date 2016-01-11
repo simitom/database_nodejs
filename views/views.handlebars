@@ -1,9 +1,10 @@
+
 <div class="container">
-  {{#each rows}}
-    {{#each Object.keys(row)}}
-      <div class="form-group">
-        <label> {{#col}}:</label><span class="list-group-item list-group-item-info" {{# row[col]}}> </span>
-      </div>
+    {{#each rows}}
+        {{#each this}}
+            <div class="form-group">
+                <label>{{@key}}</label><span class="list-group-item list-group-item-info">{{this}}</span>
+            </div>
+        {{/each}}
     {{/each}}
-  {{/each}}
 </div>
