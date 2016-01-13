@@ -1,5 +1,0 @@
-http://stackoverflow.com/questions/33112289/knex-and-postgresql-change-column-type
-
-http://stackoverflow.com/questions/34342262/knex-js-reading-then-updating-throws-an-error
-
-http://stackoverflow.com/questions/21759852/easier-way-to-update-data-with-node-postgres
